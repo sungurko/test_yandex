@@ -29,11 +29,12 @@ class Yandex(unittest.TestCase):
 		img1.click()
 		time.sleep(5)
 		assert img1.get_attribute('href').split('&')[3] == main_page.current_url().split('&')[4], ('Не открылась')
+		first_image=main_page.current_url().split('&')[3]
 		img1.send_keys(Keys.RIGHT)
 		time.sleep(5)
 		img1.send_keys(Keys.LEFT)
 		time.sleep(5)
-		assert main_page.current_url().split('&')[3] == main_page.current_url().split('&')[3], ('Картинки разные')
+		assert main_page.current_url().split('&')[3] == first_image, ('Картинки разные')
 
 	def tearDown(self):
 		self.driver.quit()
